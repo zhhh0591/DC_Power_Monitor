@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 720" font-family="ui-sans-serif,-apple-system,'Segoe UI',sans-serif">
+  <style>
+    .wire{fill:none;stroke-linejoin:round;stroke-linecap:round}
+    .sig{stroke-width:4}
+    .pwr{stroke-width:6}
+    .pin{fill:#d4a017;stroke:#8a6a0f;stroke-width:1}
+    .plbl{font-size:12px;fill:#e5e7eb}
+    .cap{font-size:12px;fill:#374151}
+  </style>
+  <rect x="0" y="0" width="1120" height="720" fill="#ffffff"/>
+  <text x="560" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#111827">Phase 1 · Basic Measurement Wiring</text>
+  <text x="560" y="62" text-anchor="middle" font-size="13" fill="#6b7280">ESP32 + INA219 + DC fan + battery   |   Series loop:  battery+ → Vin+ → Vin− → fan red → fan black → battery−</text>
+  <path class="wire sig" stroke="#d92626" d="M256,200 H290 V140 H484"/>
+  <path class="wire sig" stroke="#222222" d="M256,260 H320 V175 H484"/>
+  <path class="wire sig" stroke="#e6b800" d="M256,320 H350 V210 H484"/>
+  <path class="wire sig" stroke="#2563eb" d="M256,380 H380 V245 H484"/>
+  <path class="wire pwr" stroke="#d92626" d="M940,546 V530 H1045 V150 H732"/>
+  <path class="wire pwr" stroke="#d92626" d="M732,230 H815 V310 H840"/>
+  <path class="wire pwr" stroke="#222222" d="M840,380 H780 V546"/>
+  <path class="wire sig" stroke="#222222" d="M780,520 H30 V340 H44"/>
+  <circle cx="780" cy="520" r="5" fill="#222222"/>
+  <g fill="#d92626">
+    <path d="M1045,352 L1038,366 L1052,366 Z"/>          
+    <path d="M868,150 L882,143 L882,157 Z"/>             
+    <path d="M778,230 L764,223 L764,237 Z"/>             
+  </g>
+  <path d="M780,478 L773,464 L787,464 Z" fill="#222222"/> 
+  <text x="880" y="170" text-anchor="middle" font-size="11" fill="#d92626">Battery + → Vin+  (through INA219 first)</text>
+  <text x="400" y="510" text-anchor="middle" font-size="11" fill="#374151">Common ground: battery− ↔ ESP32 GND</text>
+  <text x="836" y="298" text-anchor="end" font-size="11" fill="#d92626">red +</text>
+  <text x="836" y="372" text-anchor="end" font-size="11" fill="#222222">black −</text>
+  <g>
+    <rect x="60" y="140" width="180" height="320" rx="10" fill="#2f3640" stroke="#1e242b" stroke-width="2"/>
+    <rect x="85" y="160" width="130" height="88" rx="6" fill="#aab4c0" stroke="#7d8894" stroke-width="1.5"/>
+    <text x="150" y="198" text-anchor="middle" font-size="15" font-weight="700" fill="#2f3640">ESP32</text>
+    <text x="150" y="216" text-anchor="middle" font-size="10" fill="#4b5563">WROOM-32</text>
+    <text x="150" y="440" text-anchor="middle" font-size="14" font-weight="700" fill="#f3f4f6">ESP32 DevKit</text>
+    <rect x="125" y="452" width="50" height="14" rx="2" fill="#c0c7cf" stroke="#8a949f"/>
+    <rect class="pin" x="238" y="195" width="18" height="10"/>
+    <rect class="pin" x="238" y="255" width="18" height="10"/>
+    <rect class="pin" x="238" y="315" width="18" height="10"/>
+    <rect class="pin" x="238" y="375" width="18" height="10"/>
+    <text class="plbl" x="230" y="204" text-anchor="end">3V3</text>
+    <text class="plbl" x="230" y="264" text-anchor="end">GND</text>
+    <text class="plbl" x="230" y="324" text-anchor="end">GPIO22 · SCL</text>
+    <text class="plbl" x="230" y="384" text-anchor="end">GPIO21 · SDA</text>
+    <rect class="pin" x="44" y="335" width="18" height="10"/>
+    <text class="plbl" x="70" y="344">GND</text>
+  </g>
+  <g>
+    <rect x="500" y="100" width="200" height="180" rx="8" fill="#7b2d8b" stroke="#5a1f66" stroke-width="2"/>
+    <text x="600" y="124" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">INA219 Current Sensor</text>
+    <rect x="566" y="170" width="52" height="52" rx="3" fill="#1f2937" stroke="#000000"/>
+    <text x="592" y="200" text-anchor="middle" font-size="9" fill="#e5e7eb">INA219</text>
+    <rect class="pin" x="484" y="135" width="18" height="10"/>
+    <rect class="pin" x="484" y="170" width="18" height="10"/>
+    <rect class="pin" x="484" y="205" width="18" height="10"/>
+    <rect class="pin" x="484" y="240" width="18" height="10"/>
+    <text class="plbl" x="508" y="144">VCC</text>
+    <text class="plbl" x="508" y="179">GND</text>
+    <text class="plbl" x="508" y="214">SCL</text>
+    <text class="plbl" x="508" y="249">SDA</text>
+    <rect x="676" y="125" width="56" height="130" rx="4" fill="#1e5aa8" stroke="#14406e" stroke-width="2"/>
+    <circle cx="704" cy="150" r="9" fill="#dbeafe" stroke="#0f2f57" stroke-width="2"/>
+    <line x1="698" y1="150" x2="710" y2="150" stroke="#0f2f57" stroke-width="2"/>
+    <circle cx="704" cy="230" r="9" fill="#dbeafe" stroke="#0f2f57" stroke-width="2"/>
+    <line x1="698" y1="230" x2="710" y2="230" stroke="#0f2f57" stroke-width="2"/>
+    <text x="668" y="154" text-anchor="end" font-size="12" font-weight="700" fill="#ffffff">Vin+</text>
+    <text x="668" y="234" text-anchor="end" font-size="12" font-weight="700" fill="#ffffff">Vin−</text>
+  </g>
+  <g>
+    <rect x="840" y="260" width="170" height="170" rx="16" fill="#4a5568" stroke="#2d3748" stroke-width="2"/>
+    <circle cx="925" cy="345" r="70" fill="#374151"/>
+    <g fill="#a8b1bc" opacity="0.9">
+      <ellipse cx="925" cy="303" rx="15" ry="36"/>
+      <ellipse cx="925" cy="303" rx="15" ry="36" transform="rotate(90 925 345)"/>
+      <ellipse cx="925" cy="303" rx="15" ry="36" transform="rotate(180 925 345)"/>
+      <ellipse cx="925" cy="303" rx="15" ry="36" transform="rotate(270 925 345)"/>
+    </g>
+    <circle cx="925" cy="345" r="20" fill="#9aa3af" stroke="#6b7280" stroke-width="2"/>
+    <circle cx="856" cy="276" r="5" fill="#263038"/>
+    <circle cx="994" cy="276" r="5" fill="#263038"/>
+    <circle cx="856" cy="414" r="5" fill="#263038"/>
+    <circle cx="994" cy="414" r="5" fill="#263038"/>
+    <circle cx="840" cy="310" r="5" fill="#d92626"/>
+    <circle cx="840" cy="380" r="5" fill="#222222"/>
+    <text x="925" y="450" text-anchor="middle" font-size="13" font-weight="700" fill="#374151">Small DC Fan</text>
+  </g>
+  <g>
+    <rect x="720" y="560" width="260" height="110" rx="10" fill="#263238" stroke="#111827" stroke-width="2"/>
+    <rect x="738" y="584" width="104" height="58" rx="14" fill="#0e7490" stroke="#0a4f63" stroke-width="1.5"/>
+    <rect x="856" y="584" width="104" height="58" rx="14" fill="#0e7490" stroke="#0a4f63" stroke-width="1.5"/>
+    <rect x="832" y="602" width="8" height="22" fill="#cbd5e1"/>
+    <rect x="950" y="602" width="8" height="22" fill="#cbd5e1"/>
+    <text x="788" y="617" text-anchor="middle" font-size="10" fill="#e0f2fe">AA</text>
+    <text x="906" y="617" text-anchor="middle" font-size="10" fill="#e0f2fe">AA</text>
+    <text x="850" y="662" text-anchor="middle" font-size="12" fill="#e5e7eb">Battery Pack (AA cells in series)</text>
+    <rect x="772" y="546" width="16" height="14" fill="#222222"/>
+    <rect x="932" y="546" width="16" height="14" fill="#d92626"/>
+    <text x="762" y="558" text-anchor="end" font-size="18" font-weight="700" fill="#222222">−</text>
+    <text x="958" y="558" font-size="18" font-weight="700" fill="#d92626">＋</text>
+  </g>
+  <g>
+    <rect x="760" y="70" width="330" height="44" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="775" y="88" font-size="12" font-weight="700" fill="#92400e">! Series connection: load current must pass through INA219 first</text>
+    <text x="775" y="106" font-size="12" fill="#92400e">(Vin+ → Vin−) before reaching the fan</text>
+  </g>
+  <g>
+    <rect x="60" y="575" width="580" height="120" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="78" y="600" font-size="13" font-weight="700" fill="#111827">Legend</text>
+    <line x1="80" y1="620" x2="116" y2="620" stroke="#d92626" stroke-width="6" stroke-linecap="round"/>
+    <text class="cap" x="126" y="624">Red: 3.3V supply / battery + (thick = high-current path)</text>
+    <line x1="80" y1="643" x2="116" y2="643" stroke="#222222" stroke-width="4" stroke-linecap="round"/>
+    <text class="cap" x="126" y="647">Black: GND / battery − (common ground)</text>
+    <line x1="80" y1="666" x2="116" y2="666" stroke="#e6b800" stroke-width="4" stroke-linecap="round"/>
+    <text class="cap" x="126" y="670">Yellow: SCL — GPIO22</text>
+    <line x1="330" y1="666" x2="366" y2="666" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+    <text class="cap" x="376" y="670">Blue: SDA — GPIO21</text>
+    <path d="M84,683 L98,689 L84,695 Z" fill="#d92626"/>
+    <text class="cap" x="126" y="693">Current direction (series loop)</text>
+  </g>
+</svg>

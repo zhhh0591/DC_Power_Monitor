@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 880" font-family="ui-sans-serif,-apple-system,'Segoe UI',sans-serif">
+  <style>
+    .wire{fill:none;stroke-linejoin:round;stroke-linecap:round}
+    .sig{stroke-width:4}
+    .pwr{stroke-width:6}
+    .pin{fill:#d4a017;stroke:#8a6a0f;stroke-width:1}
+    .plbl{font-size:12px;fill:#e5e7eb}
+    .cap{font-size:12px;fill:#374151}
+  </style>
+
+  <rect x="0" y="0" width="1280" height="880" fill="#ffffff"/>
+
+  <text x="640" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#111827">Phase 4 · MOSFET Load Control &amp; Protection Wiring</text>
+  <text x="640" y="58" text-anchor="middle" font-size="13" fill="#6b7280">Current path: battery+ → INA219 Vin+ → Vin− → fan red → fan black → MOSFET Drain → Source → battery−   |   GPIO18 PWM drives the Gate</text>
+
+  <!-- logic wires -->
+  <path class="wire sig" stroke="#d92626" d="M256,210 H290 V130 H424"/>
+  <path class="wire sig" stroke="#222222" d="M256,270 H315 V165 H424"/>
+  <path class="wire sig" stroke="#e6b800" d="M256,330 H340 V200 H424"/>
+  <path class="wire sig" stroke="#2563eb" d="M256,390 H365 V235 H424"/>
+  <!-- PWM gate wire -->
+  <path class="wire sig" stroke="#16a34a" d="M256,450 H360 V600 H1050 V540"/>
+
+  <!-- power: battery+ -> INA219 Vin+ -->
+  <path class="wire pwr" stroke="#d92626" d="M1160,646 V620 H1250 V74 H700 V140 H672"/>
+  <!-- power: INA219 Vin- -> fan red -->
+  <path class="wire pwr" stroke="#d92626" d="M672,220 H730 V205 H780"/>
+  <!-- power: fan black -> MOSFET Drain -->
+  <path class="wire pwr" stroke="#222222" d="M950,205 H1240 V600 H1100 V540"/>
+  <!-- power: MOSFET Source -> battery- -->
+  <path class="wire pwr" stroke="#222222" d="M1150,540 V620 H1000 V646"/>
+  <!-- common ground -->
+  <path class="wire sig" stroke="#222222" d="M1000,646 H30 V350 H44"/>
+  <circle cx="1000" cy="646" r="5" fill="#222222"/>
+
+  <!-- flyback diode across the fan -->
+  <path class="wire sig" stroke="#c2410c" d="M780,205 V340 H838"/>
+  <path class="wire sig" stroke="#c2410c" d="M870,340 H950 V205"/>
+  <polygon points="870,322 870,358 840,340" fill="#c2410c" stroke="#9a3412" stroke-width="1.5"/>
+  <line x1="838" y1="318" x2="838" y2="362" stroke="#6b7280" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="780" cy="205" r="5" fill="#d92626"/>
+  <circle cx="950" cy="205" r="5" fill="#222222"/>
+  <text x="865" y="392" text-anchor="middle" font-size="11" font-weight="700" fill="#9a3412">Flyback diode 1N4007</text>
+  <text x="865" y="408" text-anchor="middle" font-size="10.5" fill="#9a3412">silver band faces the fan + side</text>
+
+  <!-- current arrows -->
+  <g fill="#d92626">
+    <path d="M1250,352 L1243,366 L1257,366 Z"/>
+    <path d="M948,74 L962,67 L962,81 Z"/>
+    <path d="M762,205 L748,198 L748,212 Z"/>
+  </g>
+  <g fill="#222222">
+    <path d="M1092,205 L1078,198 L1078,212 Z"/>
+    <path d="M1240,430 L1233,444 L1247,444 Z"/>
+  </g>
+
+  <!-- annotations -->
+  <text x="1075" y="98" text-anchor="middle" font-size="11" fill="#d92626">Battery + → Vin+  (through INA219 first)</text>
+  <text x="640" y="592" text-anchor="middle" font-size="11" fill="#16a34a">GPIO18 PWM signal → Gate</text>
+  <text x="470" y="672" text-anchor="middle" font-size="11" fill="#374151">Common ground: battery− ↔ ESP32 GND ↔ MOSFET Source</text>
+  <text x="774" y="188" text-anchor="end" font-size="11" fill="#d92626">red +</text>
+  <text x="958" y="188" font-size="11" fill="#222222">black −</text>
+
+  <!-- ESP32 -->
+  <g>
+    <rect x="60" y="150" width="180" height="380" rx="10" fill="#2f3640" stroke="#1e242b" stroke-width="2"/>
+    <rect x="85" y="170" width="130" height="85" rx="6" fill="#aab4c0" stroke="#7d8894" stroke-width="1.5"/>
+    <text x="150" y="207" text-anchor="middle" font-size="15" font-weight="700" fill="#2f3640">ESP32</text>
+    <text x="150" y="225" text-anchor="middle" font-size="10" fill="#4b5563">WROOM-32</text>
+    <text x="150" y="508" text-anchor="middle" font-size="14" font-weight="700" fill="#f3f4f6">ESP32 DevKit</text>
+    <rect x="125" y="522" width="50" height="14" rx="2" fill="#c0c7cf" stroke="#8a949f"/>
+    <rect class="pin" x="238" y="205" width="18" height="10"/>
+    <rect class="pin" x="238" y="265" width="18" height="10"/>
+    <rect class="pin" x="238" y="325" width="18" height="10"/>
+    <rect class="pin" x="238" y="385" width="18" height="10"/>
+    <rect class="pin" x="238" y="445" width="18" height="10"/>
+    <text class="plbl" x="230" y="214" text-anchor="end">3V3</text>
+    <text class="plbl" x="230" y="274" text-anchor="end">GND</text>
+    <text class="plbl" x="230" y="334" text-anchor="end">GPIO22 · SCL</text>
+    <text class="plbl" x="230" y="394" text-anchor="end">GPIO21 · SDA</text>
+    <text class="plbl" x="230" y="454" text-anchor="end">GPIO18 · PWM</text>
+    <rect class="pin" x="44" y="345" width="18" height="10"/>
+    <text class="plbl" x="70" y="354">GND</text>
+  </g>
+
+  <!-- INA219 -->
+  <g>
+    <rect x="440" y="90" width="200" height="180" rx="8" fill="#7b2d8b" stroke="#5a1f66" stroke-width="2"/>
+    <text x="540" y="114" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">INA219 Current Sensor</text>
+    <rect x="514" y="158" width="52" height="52" rx="3" fill="#1f2937" stroke="#000000"/>
+    <text x="540" y="188" text-anchor="middle" font-size="9" fill="#e5e7eb">INA219</text>
+    <rect class="pin" x="424" y="125" width="18" height="10"/>
+    <rect class="pin" x="424" y="160" width="18" height="10"/>
+    <rect class="pin" x="424" y="195" width="18" height="10"/>
+    <rect class="pin" x="424" y="230" width="18" height="10"/>
+    <text class="plbl" x="448" y="134">VCC</text>
+    <text class="plbl" x="448" y="169">GND</text>
+    <text class="plbl" x="448" y="204">SCL</text>
+    <text class="plbl" x="448" y="239">SDA</text>
+    <rect x="616" y="115" width="56" height="130" rx="4" fill="#1e5aa8" stroke="#14406e" stroke-width="2"/>
+    <circle cx="644" cy="140" r="9" fill="#dbeafe" stroke="#0f2f57" stroke-width="2"/>
+    <line x1="638" y1="140" x2="650" y2="140" stroke="#0f2f57" stroke-width="2"/>
+    <circle cx="644" cy="220" r="9" fill="#dbeafe" stroke="#0f2f57" stroke-width="2"/>
+    <line x1="638" y1="220" x2="650" y2="220" stroke="#0f2f57" stroke-width="2"/>
+    <text x="608" y="144" text-anchor="end" font-size="12" font-weight="700" fill="#ffffff">Vin+</text>
+    <text x="608" y="224" text-anchor="end" font-size="12" font-weight="700" fill="#ffffff">Vin−</text>
+  </g>
+
+  <!-- Fan -->
+  <g>
+    <rect x="780" y="120" width="170" height="170" rx="16" fill="#4a5568" stroke="#2d3748" stroke-width="2"/>
+    <circle cx="865" cy="205" r="70" fill="#374151"/>
+    <g fill="#a8b1bc" opacity="0.9">
+      <ellipse cx="865" cy="163" rx="15" ry="36"/>
+      <ellipse cx="865" cy="163" rx="15" ry="36" transform="rotate(90 865 205)"/>
+      <ellipse cx="865" cy="163" rx="15" ry="36" transform="rotate(180 865 205)"/>
+      <ellipse cx="865" cy="163" rx="15" ry="36" transform="rotate(270 865 205)"/>
+    </g>
+    <circle cx="865" cy="205" r="20" fill="#9aa3af" stroke="#6b7280" stroke-width="2"/>
+    <circle cx="796" cy="136" r="5" fill="#263038"/>
+    <circle cx="934" cy="136" r="5" fill="#263038"/>
+    <circle cx="796" cy="274" r="5" fill="#263038"/>
+    <circle cx="934" cy="274" r="5" fill="#263038"/>
+    <text x="865" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#374151">Small DC Fan</text>
+  </g>
+
+  <!-- MOSFET -->
+  <g>
+    <rect x="1010" y="380" width="180" height="140" rx="8" fill="#4c1d95" stroke="#2e1065" stroke-width="2"/>
+    <rect x="1042" y="366" width="116" height="22" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5"/>
+    <circle cx="1100" cy="377" r="5" fill="#94a3b8"/>
+    <text x="1100" y="424" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">IRLZ44N</text>
+    <text x="1100" y="443" text-anchor="middle" font-size="10" fill="#ddd6fe">N-channel logic-level MOSFET</text>
+    <text x="1100" y="461" text-anchor="middle" font-size="10" fill="#ddd6fe">3.3V gate drive · PWM capable</text>
+    <rect class="pin" x="1045" y="520" width="10" height="20"/>
+    <rect class="pin" x="1095" y="520" width="10" height="20"/>
+    <rect class="pin" x="1145" y="520" width="10" height="20"/>
+    <text x="1050" y="500" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">G</text>
+    <text x="1100" y="500" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">D</text>
+    <text x="1150" y="500" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">S</text>
+    <text x="1100" y="558" text-anchor="middle" font-size="10.5" fill="#374151">printed face toward you, pins down: left G · middle D · right S</text>
+  </g>
+
+  <!-- Battery -->
+  <g>
+    <rect x="940" y="660" width="260" height="110" rx="10" fill="#263238" stroke="#111827" stroke-width="2"/>
+    <rect x="958" y="684" width="104" height="58" rx="14" fill="#0e7490" stroke="#0a4f63" stroke-width="1.5"/>
+    <rect x="1076" y="684" width="104" height="58" rx="14" fill="#0e7490" stroke="#0a4f63" stroke-width="1.5"/>
+    <rect x="1052" y="702" width="8" height="22" fill="#cbd5e1"/>
+    <rect x="1170" y="702" width="8" height="22" fill="#cbd5e1"/>
+    <text x="1008" y="717" text-anchor="middle" font-size="10" fill="#e0f2fe">AA</text>
+    <text x="1126" y="717" text-anchor="middle" font-size="10" fill="#e0f2fe">AA</text>
+    <text x="1070" y="762" text-anchor="middle" font-size="12" fill="#e5e7eb">Battery Pack (AA cells in series)</text>
+    <rect x="992" y="646" width="16" height="14" fill="#222222"/>
+    <rect x="1152" y="646" width="16" height="14" fill="#d92626"/>
+    <text x="984" y="658" text-anchor="end" font-size="18" font-weight="700" fill="#222222">−</text>
+    <text x="1176" y="658" font-size="18" font-weight="700" fill="#d92626">＋</text>
+  </g>
+
+  <!-- protection note -->
+  <g>
+    <rect x="660" y="790" width="580" height="70" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+    <text x="678" y="814" font-size="12" font-weight="700" fill="#92400e">! Protection: when measured current exceeds the threshold, firmware sets PWM duty to 0,</text>
+    <text x="678" y="833" font-size="12" fill="#92400e">the MOSFET turns off and the load is cut within milliseconds. The system then latches into</text>
+    <text x="678" y="851" font-size="12" fill="#92400e">LOCKOUT and stays off until an explicit RESET command. No cloud round-trip involved.</text>
+  </g>
+
+  <!-- legend -->
+  <g>
+    <rect x="60" y="700" width="560" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="78" y="724" font-size="13" font-weight="700" fill="#111827">Legend</text>
+    <line x1="80" y1="748" x2="116" y2="748" stroke="#d92626" stroke-width="6" stroke-linecap="round"/>
+    <text class="cap" x="126" y="752">Red: battery + / high-current path</text>
+    <line x1="80" y1="772" x2="116" y2="772" stroke="#222222" stroke-width="6" stroke-linecap="round"/>
+    <text class="cap" x="126" y="776">Black: return path / GND (common ground)</text>
+    <line x1="80" y1="796" x2="116" y2="796" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/>
+    <text class="cap" x="126" y="800">Green: GPIO18 → MOSFET Gate (PWM)</text>
+    <line x1="80" y1="820" x2="116" y2="820" stroke="#e6b800" stroke-width="4" stroke-linecap="round"/>
+    <text class="cap" x="126" y="824">Yellow: SCL — GPIO22</text>
+    <line x1="330" y1="820" x2="366" y2="820" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+    <text class="cap" x="376" y="824">Blue: SDA — GPIO21</text>
+    <line x1="330" y1="796" x2="366" y2="796" stroke="#c2410c" stroke-width="4" stroke-linecap="round"/>
+    <text class="cap" x="376" y="800">Orange: flyback diode</text>
+    <path d="M330,742 L344,748 L330,754 Z" fill="#d92626"/>
+    <text class="cap" x="376" y="752">Current direction</text>
+  </g>
+</svg>

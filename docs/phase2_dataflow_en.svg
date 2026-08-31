@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 460" font-family="ui-sans-serif,-apple-system,'Segoe UI',sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1160" height="460" fill="#ffffff"/>
+  <text x="580" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#111827">Phase 2 · Data Flow Diagram</text>
+  <text x="580" y="64" text-anchor="middle" font-size="13" fill="#6b7280">INA219 sampling → ESP32 (WiFi/MQTT) → cloud broker → web dashboard  (no new hardware)</text>
+  <line x1="256" y1="235" x2="330" y2="235" stroke="#475569" stroke-width="4" marker-end="url(#arr)"/>
+  <text x="296" y="212" text-anchor="middle" font-size="12" font-weight="700" fill="#374151">I2C read</text>
+  <text x="296" y="260" text-anchor="middle" font-size="10" fill="#6b7280">GPIO21 / GPIO22</text>
+  <line x1="536" y1="235" x2="600" y2="235" stroke="#475569" stroke-width="4" marker-end="url(#arr)"/>
+  <text x="570" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#374151">WiFi · MQTT</text>
+  <text x="570" y="216" text-anchor="middle" font-size="11" fill="#374151">publish JSON</text>
+  <text x="570" y="260" text-anchor="middle" font-size="10" font-family="ui-monospace,Consolas,monospace" fill="#6b7280">publish</text>
+  <line x1="842" y1="235" x2="910" y2="235" stroke="#475569" stroke-width="4" marker-end="url(#arr)"/>
+  <text x="877" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="#374151">WebSocket</text>
+  <text x="877" y="213" text-anchor="middle" font-size="11" fill="#374151">/ HTTP subscribe</text>
+  <text x="877" y="260" text-anchor="middle" font-size="10" font-family="ui-monospace,Consolas,monospace" fill="#6b7280">subscribe</text>
+  <g>
+    <rect x="60" y="150" width="190" height="170" rx="12" fill="#7b2d8b" stroke="#5a1f66" stroke-width="2"/>
+    <rect x="133" y="172" width="44" height="30" rx="3" fill="#1f2937" stroke="#000000"/>
+    <text x="155" y="191" text-anchor="middle" font-size="8" fill="#e5e7eb">INA219</text>
+    <text x="155" y="235" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">INA219</text>
+    <text x="155" y="262" text-anchor="middle" font-size="12" fill="#e9d5f5">I2C Current Sensor</text>
+    <text x="155" y="284" text-anchor="middle" font-size="12" fill="#e9d5f5">voltage · current · power</text>
+  </g>
+  <g>
+    <rect x="340" y="150" width="190" height="170" rx="12" fill="#2f3640" stroke="#1e242b" stroke-width="2"/>
+    <g stroke="#38bdf8" stroke-width="3" fill="none" stroke-linecap="round">
+      <path d="M411,192 A34,34 0 0 1 459,192"/>
+      <path d="M421,202 A20,20 0 0 1 449,202"/>
+    </g>
+    <circle cx="435" cy="212" r="4" fill="#38bdf8"/>
+    <text x="435" y="245" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">ESP32</text>
+    <text x="435" y="270" text-anchor="middle" font-size="12" fill="#cbd5e1">WiFi + MQTT Client</text>
+    <text x="435" y="292" text-anchor="middle" font-size="12" fill="#cbd5e1">periodic telemetry publish</text>
+  </g>
+  <g>
+    <path d="M660,300
+             C628,300 608,280 608,254
+             C608,228 628,212 652,212
+             C658,185 682,168 712,168
+             C744,168 768,184 776,206
+             C806,202 834,218 838,246
+             C842,274 820,298 788,300 Z"
+          fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+    <text x="722" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#075985">MQTT Broker</text>
+    <text x="722" y="262" text-anchor="middle" font-size="12" fill="#0369a1">Cloud / Local Broker</text>
+    <text x="722" y="283" text-anchor="middle" font-size="10" font-family="ui-monospace,Consolas,monospace" fill="#0369a1">topic: dc_monitor/data</text>
+  </g>
+  <g>
+    <rect x="920" y="150" width="190" height="170" rx="10" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+    <rect x="924" y="180" width="182" height="136" rx="6" fill="#ffffff"/>
+    <circle cx="938" cy="165" r="4" fill="#f87171"/>
+    <circle cx="952" cy="165" r="4" fill="#fbbf24"/>
+    <circle cx="966" cy="165" r="4" fill="#34d399"/>
+    <text x="1040" y="170" text-anchor="middle" font-size="11" fill="#e2e8f0">Dashboard</text>
+    <path d="M983,246 A32,32 0 0 1 1047,246" fill="none" stroke="#e5e7eb" stroke-width="8" stroke-linecap="round"/>
+    <path d="M983,246 A32,32 0 0 1 1032,219" fill="none" stroke="#16a34a" stroke-width="8" stroke-linecap="round"/>
+    <text x="1015" y="266" text-anchor="middle" font-size="14" font-weight="700" fill="#111827">12.4 W</text>
+    <g fill="#60a5fa">
+      <rect x="948" y="290" width="13" height="18"/>
+      <rect x="966" y="282" width="13" height="26"/>
+      <rect x="984" y="294" width="13" height="14"/>
+      <rect x="1002" y="286" width="13" height="22"/>
+      <rect x="1020" y="278" width="13" height="30"/>
+      <rect x="1038" y="288" width="13" height="20"/>
+      <rect x="1056" y="284" width="13" height="24"/>
+    </g>
+  </g>
+  <text x="1015" y="345" text-anchor="middle" font-size="12" fill="#374151">Web Dashboard (live charts / alerts)</text>
+  <text x="580" y="420" text-anchor="middle" font-size="12" fill="#6b7280">Phase 2 adds only software and cloud components; the wiring is identical to Phase 1.</text>
+</svg>
