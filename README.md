@@ -5,7 +5,20 @@ overload protection, and automated load characterization.
 
 **Live Dashboard:** [https://self-project-frontend.vercel.app/]
 
-![Dashboard](docs/dashboard.png)
+## System Architecture
+
+![Data Flow](docs/phase2_dataflow_en.svg)
+
+## Wiring
+
+### Phase 1 — Measurement only
+![Phase 1 Wiring](docs/phase1_wiring_en.svg)
+
+### Phase 4 — With MOSFET control and protection
+![Phase 4 Wiring](docs/phase4_wiring_mosfet_en.svg)
+
+### The actual build
+![Build Photo](docs/build_photo.jpg)
 
 ## Overview
 
