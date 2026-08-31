@@ -3,7 +3,7 @@
 An ESP32-based IoT system for real-time DC power monitoring, remote load control, 
 overload protection, and automated load characterization.
 
-**Live Dashboard:** [https://self-project-frontend.vercel.app/]
+**Live Dashboard:** [self-project-frontend.vercel.app](https://self-project-frontend.vercel.app)
 
 ## System Architecture
 
